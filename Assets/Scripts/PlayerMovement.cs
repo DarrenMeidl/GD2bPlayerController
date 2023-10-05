@@ -37,5 +37,8 @@ public class PlayerMovement : MonoBehaviour
             grounded = true;
         }
     }
+    private void Flip(){
+        Vector3 currentScale = gameObject
+    }
     
 }
