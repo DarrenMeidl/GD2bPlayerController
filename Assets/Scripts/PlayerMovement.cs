@@ -11,9 +11,10 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
     private bool facingRight = true;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
