@@ -22,8 +22,9 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        anim.SetBool("walk", horizontalInput!=0);
 
-        if(Input.GetKey(KeyCode.Space && grounded)){
+        if(Input.GetKey(KeyCode.Space) && grounded){
             Jump();
         }
 
@@ -31,14 +32,16 @@ public class PlayerMovement : MonoBehaviour
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, jumpHeight);
         grounded = false;
+        anim.SetTrigger("jump");
     }
     private void OnCollisionEnter2D(Collision2D other){
-        if(other.GameObject.CompareTag("Ground")){
+        if(other.gameObject.CompareTag("Ground")){
             grounded = true;
         }
     }
+    /*
     private void Flip(){
         Vector3 currentScale = gameObject
-    }
+    }*/
     
 }
