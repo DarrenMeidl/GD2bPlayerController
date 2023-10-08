@@ -25,11 +25,11 @@ public class AdvancedPlayerMovement : MonoBehaviour
     private bool isCrouching = false;
     private bool facingRight = true;
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<audioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class AdvancedPlayerMovement : MonoBehaviour
     {
         grounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
         
-        float horizontalInput = horizontalInput.GetAxisRaw("Horizontal");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("walk", horizontalInput !=0);
 
