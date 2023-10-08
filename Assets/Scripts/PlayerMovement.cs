@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("walk", horizontalInput!=0);
 
+        if((horizontalInput>0 && !facingRight) || (horizontalInput<0 && facingRight)){
+            Flip();
+        }
+
         if(Input.GetKey(KeyCode.Space) && grounded){
             Jump();
         }
@@ -39,9 +43,11 @@ public class PlayerMovement : MonoBehaviour
             grounded = true;
         }
     }
-    /*
     private void Flip(){
-        Vector3 currentScale = gameObject
-    }*/
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        facingRight = !facingRight;
+    }
     
 }
