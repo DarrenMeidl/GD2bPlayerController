@@ -825,7 +825,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 717631965}
-  groundCheckRadius: 0.5
+  groundCheckRadius: 0.2
   jumpSound: {fileID: 0}
   dashSound: {fileID: 0}
   footstepSound: {fileID: 0}
@@ -1667,6 +1667,7 @@ GameObject:
   - component: {fileID: 1099642794}
   - component: {fileID: 1099642797}
   - component: {fileID: 1099642796}
+  - component: {fileID: 1099642798}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1804,7 +1805,26 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1099642798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099642793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0433a77691952d84ab737b102c173022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  groundCheckDistance: 0.6
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  maxHealth: 5
+  damage: 1
 --- !u!1 &1409252269
 GameObject:
   m_ObjectHideFlags: 0
