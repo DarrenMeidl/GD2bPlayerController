@@ -24,6 +24,10 @@ public class EnemyController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void Initialize(EnemySpawner spawnerReference){
+        spawner = spawnerReference;
+    }
+
     // Update is called once per frame
     void Update()
     {
