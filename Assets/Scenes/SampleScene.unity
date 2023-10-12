@@ -955,7 +955,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 6e5bb1e3e15b2e141a38cbb324068875, type: 3}
   dashSound: {fileID: 0}
   footstepSound: {fileID: 0}
-  attackDamage: 1
+  attackDamage: 5
   attackRange: 2
   enemyLayers:
     serializedVersion: 2
