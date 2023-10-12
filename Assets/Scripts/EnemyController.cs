@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int damage = 1;
     private Rigidbody2D enemyRigidBody;
     private EnemySpawner spawner;
-
+    private bool canChangeDirection = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,13 +40,20 @@ public class EnemyController : MonoBehaviour
             new Vector2(transform.position.x - 0.5f, transform.position.y);
 
         bool isGrounded = Physics2D.Raycast(groundCheckPosition, Vector2.down, groundCheckDistance, whatIsGround);
-        if(!isGrounded){
+        if(!isGrounded && canChangeDirection){
             movingRight =!movingRight;
+            StartCoroutine(DelayDirectionChange());
         }
         //borrowed from naoise's class it does this...
         enemyRigidBody.velocity = movingRight ?
             new Vector2(moveSpeed, enemyRigidBody.velocity.y):
             new Vector2(-moveSpeed, enemyRigidBody.velocity.y);
+    }
+
+    IEnumerator DelayDirectionChange(){
+        canChangeDirection = false;
+        yield return new WaitForSeconds(0.5f);
+        canChangeDirection = true;
     }
 
     public void TakeDamage(int damageAmount){
