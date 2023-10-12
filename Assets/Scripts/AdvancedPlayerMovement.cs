@@ -18,6 +18,10 @@ public class AdvancedPlayerMovement : MonoBehaviour
     public AudioClip dashSound;
     public AudioClip footstepSound;
 
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackRange = 1f;
+    public LayerMask enemyLayers;
+
     private Rigidbody2D body;
     private Animator anim;
     private AudioSource audioPlayer;
@@ -63,6 +67,10 @@ public class AdvancedPlayerMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.F)){
+            Attack();
+        }
+
         if((horizontalInput>0 && !facingRight) || (horizontalInput<0 && facingRight)){
             Flip();
         }
@@ -103,5 +111,21 @@ public class AdvancedPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         speed = originalSpeed;
         isDashing = false;
+    }
+
+    void Attack(){
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies){
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null){
+                enemyController.TakeDamage(attackDamage);
+                Debug.Log("Enemy Damaged!");
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

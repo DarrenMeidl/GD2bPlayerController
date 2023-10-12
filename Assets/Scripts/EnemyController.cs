@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        
+        AdvancedPlayerMovement player = collision.gameObject.GetComponent<AdvancedPlayerMovement>();
+
     }
 }
