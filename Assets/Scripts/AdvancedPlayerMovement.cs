@@ -53,6 +53,11 @@ public class AdvancedPlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Space) && grounded){
             Jump();
+            canDoubleJump = true;
+        }
+        else if(Input.GetKey(KeyCode.Space) && canDoubleJump){
+            Jump();
+            canDoubleJump = false;
         }
 
     }
