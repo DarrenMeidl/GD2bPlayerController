@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     [SerializeField] private int damage = 1;
     private Rigidbody2D enemyRigidBody;
-    //private EnemySpawner spawner;
+    private EnemySpawner spawner;
 
     // Start is called before the first frame update
     void Awake()
