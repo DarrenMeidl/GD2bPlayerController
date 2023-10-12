@@ -47,6 +47,11 @@ public class AdvancedPlayerMovement : MonoBehaviour
         if(horizontalInput != 0 && grounded){
             PlaySound(footstepSound);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)&& !isDashing){
+            StartCoroutine(Dash());
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftControl) && grounded){
             if(!isCrouching){
                 transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
@@ -57,6 +62,7 @@ public class AdvancedPlayerMovement : MonoBehaviour
                 isCrouching = false;
             }
         }
+
         if((horizontalInput>0 && !facingRight) || (horizontalInput<0 && facingRight)){
             Flip();
         }
@@ -87,5 +93,15 @@ public class AdvancedPlayerMovement : MonoBehaviour
         grounded = false;
         anim.SetTrigger("jump");
         PlaySound(jumpSound);
+    }
+
+    IEnumerator Dash(){
+        PlaySound(dashSound);
+        float originalSpeed = speed;
+        speed = dashSpeed;
+        isDashing = true;
+        yield return new WaitForSeconds(0.2f);
+        speed = originalSpeed;
+        isDashing = false;
     }
 }
