@@ -23,7 +23,7 @@ public class AdvancedPlayerMovement : MonoBehaviour
     private AudioSource audioPlayer;
 
     private bool grounded;
-    private bool canDoubleJump = true;
+    private bool canDoubleJump = false;
     private bool isDashing = false;
     private bool isCrouching = false;
     private bool facingRight = true;
