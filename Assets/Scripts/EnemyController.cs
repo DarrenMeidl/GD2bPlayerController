@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
     {
         Move();
     }
-
+    //Watched tutorial, this function does this: link
     void Move(){
         Vector2 groundCheckPosition = movingRight ?
             new Vector2(transform.position.x + 0.5f, transform.position.y):
@@ -43,8 +43,26 @@ public class EnemyController : MonoBehaviour
         if(!isGrounded){
             movingRight =!movingRight;
         }
+        //borrowed from naoise's class it does this...
         enemyRigidBody.velocity = movingRight ?
             new Vector2(moveSpeed, enemyRigidBody.velocity.y):
             new Vector2(-moveSpeed, enemyRigidBody.velocity.y);
+    }
+
+    public void TakeDamage(int damageAmount){
+        currentHealth -= damageAmount;
+        if(currentHealth <=0){
+            Die();
+        }
+    }
+    public void Die(){
+        if(spawner != null){
+            spawner.EnemyDied();
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        
     }
 }

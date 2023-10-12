@@ -15,11 +15,11 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("SpawnEnemy", spawnRate, spawnRate);
     }
     void SpawnEnemy(){
         if(currentEnemies >= maxEnemies) return;
-        Transform spawnPoint = spawnPoint[Random.Range(0, spawnPoints.Length)];
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
         enemyController.Initialize(this);
