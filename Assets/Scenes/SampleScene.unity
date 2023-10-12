@@ -956,7 +956,7 @@ MonoBehaviour:
   dashSound: {fileID: 0}
   footstepSound: {fileID: 0}
   attackDamage: 1
-  attackRange: 1
+  attackRange: 2
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
