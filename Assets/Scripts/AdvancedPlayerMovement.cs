@@ -23,7 +23,7 @@ public class AdvancedPlayerMovement : MonoBehaviour
     private AudioSource audioPlayer;
 
     private bool grounded;
-    private bool canDoubleJump = false;
+    private bool canDoubleJump = true;
     private bool isDashing = false;
     private bool isCrouching = false;
     private bool facingRight = true;
@@ -47,6 +47,16 @@ public class AdvancedPlayerMovement : MonoBehaviour
         if(horizontalInput != 0 && grounded){
             PlaySound(footstepSound);
         }
+        if (Input.GetKeyDown(KeyCode.LeftControl) && grounded){
+            if(!isCrouching){
+                transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
+                isCrouching = true;
+            }
+            else if (isCrouching){
+                transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z);
+                isCrouching = false;
+            }
+        }
         if((horizontalInput>0 && !facingRight) || (horizontalInput<0 && facingRight)){
             Flip();
         }
@@ -55,7 +65,7 @@ public class AdvancedPlayerMovement : MonoBehaviour
             Jump();
             canDoubleJump = true;
         }
-        else if(Input.GetKey(KeyCode.Space) && canDoubleJump){
+        else if(Input.GetKeyDown(KeyCode.Space) && canDoubleJump){
             Jump();
             canDoubleJump = false;
         }

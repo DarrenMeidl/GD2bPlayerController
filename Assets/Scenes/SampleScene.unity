@@ -825,7 +825,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 717631965}
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.5
   jumpSound: {fileID: 0}
   dashSound: {fileID: 0}
   footstepSound: {fileID: 0}
