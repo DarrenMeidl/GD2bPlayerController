@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Game States")]
     public bool isPaused;
     public bool isGameOver;
+    private bool slowMo;
     
     void Awake()
     {
@@ -29,9 +30,9 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P)){
             if (isPaused){
                 ResumeGame();
-                else{
-                    PauseGame();
-                }
+            }
+            else{
+                PauseGame();
             }
         }
 
@@ -48,10 +49,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         //this is wjere you'd put your pause menu
     }
-    
+    public void SlowMo(){
+        slowMo = true;
+        Time.timeScale = .1f;
+    }
     public void ResumeGame(){
         isPaused = false;
-        Time = timeScale = 1f;
+        Time.timeScale = 1f;
         //this is where you'd turn off your pause menu
     }
 
