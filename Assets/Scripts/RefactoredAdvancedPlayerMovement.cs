@@ -4,7 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 
 public class RefactoredAdvancedPlayerMovement : MonoBehaviour
 {
@@ -19,11 +20,6 @@ public class RefactoredAdvancedPlayerMovement : MonoBehaviour
     public Transform groundCheckPoint;
     public float groundCheckRadius = 0.2f;
 
-    [Header("Sounds")]
-    public AudioClip jumpSound;
-    public AudioClip dashSound;
-    public AudioClip footstepSound;
-
     [Header("Attack")]
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackRange = 1f;
@@ -32,7 +28,6 @@ public class RefactoredAdvancedPlayerMovement : MonoBehaviour
 
     private Rigidbody2D body;
     private Animator anim;
-    private AudioSource audioPlayer;
 
     private bool grounded;
     private bool canDoubleJump = false;
@@ -59,12 +54,6 @@ public class RefactoredAdvancedPlayerMovement : MonoBehaviour
     private void InitializeComponents(){
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        audioPlayer = GetComponent<AudioSource>();
-    }
-
-    private void PlaySound(AudioClip clip){
-        audioPlayer.clip = clip;
-        audioPlayer.Play();
     }
 
     private void Flip(){
@@ -98,7 +87,7 @@ public class RefactoredAdvancedPlayerMovement : MonoBehaviour
         anim.SetBool("walk", horizontalInput !=0);
 
         if(horizontalInput != 0 && grounded){
-            PlaySound(footstepSound);
+            AudioManager.instance.PlayFootstepSound();
         }
         if((horizontalInput>0 && !facingRight) || (horizontalInput<0 && facingRight)){
             Flip();
@@ -139,13 +128,13 @@ public class RefactoredAdvancedPlayerMovement : MonoBehaviour
 
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, jumpHeight);
-        grounded = false;
         anim.SetTrigger("jump");
-        PlaySound(jumpSound);
+        grounded = false;
+        AudioManager.instance.PlayJumpSound();
     }
 
     IEnumerator Dash(){
-        PlaySound(dashSound);
+        AudioManager.instance.PlayDashSound();
         float originalSpeed = speed;
         speed = dashSpeed;
         isDashing = true;

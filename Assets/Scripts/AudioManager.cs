@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour   //This will be a singleton, only 1 version exists & can't be destroyed
@@ -18,7 +17,7 @@ public class AudioManager : MonoBehaviour   //This will be a singleton, only 1 v
 
     void Awake()
     {
-        if(instance = null){
+        if(instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -54,7 +53,7 @@ public class AudioManager : MonoBehaviour   //This will be a singleton, only 1 v
             backgroundMusicSource.Play();
         }
     }
-    
+
     public void PauseBackgroundMusic(){
         backgroundMusicSource.Pause();
     }

@@ -341,37 +341,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &180207463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 180207464}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &180207464
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180207463}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3708956, y: -0.78813595, z: 3.3862484}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427155694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,9 +1070,6 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckPoint: {fileID: 717631965}
   groundCheckRadius: 0.2
-  jumpSound: {fileID: 0}
-  dashSound: {fileID: 0}
-  footstepSound: {fileID: 0}
   attackDamage: 1
   attackRange: 1.5
   enemyLayers:
@@ -5948,3 +5914,64 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa92d264397d29f46a587e66baa5a35e, type: 3}
+--- !u!1001 &1316360711853122323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3708956
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.78813595
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.3862484
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311878313784462138, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963732737424203770, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8fb459e3f2291246b015e53adc8baed, type: 3}
